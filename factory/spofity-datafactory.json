@@ -1,0 +1,9 @@
+{
+	"name": "spofity-datafactory",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b6d2f37f-9fc5-4969-a06b-77613d2adff2",
+		"tenantId": "550f5fec-b3dd-4782-a1bc-b186b8ed864e"
+	}
+}
