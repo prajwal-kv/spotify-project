@@ -282,7 +282,10 @@
 												"type": "DatasetReference",
 												"parameters": {
 													"container": "bronze-raw",
-													"folder": "cdc",
+													"folder": {
+														"value": "@{item().table}_cdc",
+														"type": "Expression"
+													},
 													"file": "empty.json"
 												}
 											}
