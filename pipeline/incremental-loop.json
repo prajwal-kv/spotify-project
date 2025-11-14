@@ -320,14 +320,16 @@
 				}
 			},
 			{
-				"name": "Alerts",
+				"name": "Web1",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
 						"dependencyConditions": [
+							"Succeeded",
+							"Skipped",
 							"Failed",
-							"Skipped"
+							"Completed"
 						]
 					}
 				],
@@ -341,9 +343,9 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "POST",
-					"url": "https://prod-31.centralindia.logic.azure.com:443/workflows/06d6afc0b28a4511b7429508c03f3144/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=vCPUcNgnyVsJfFxQbALvn2owyQpQ6RFsgRkZZc05ESY",
+					"url": "https://prod-31.centralindia.logic.azure.com:443/workflows/0a8e9f2160bb44f4b65b8713c976f705/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=ibjyza0eD1PFTc1iIf8v5nlK6z-_aFolUzBjZoX9yOA",
 					"body": {
-						"value": "{\n     \"pipeline_name\":\"@{pipeline().Pipeline}\",\n      \"pipeline_runid\":\"@{pipeline().RunId}\"\n}",
+						"value": "{\n    \"pipeline_name\" : \"@{pipeline().Pipeline}\",\n    \"pipeline_runID\" : \"@{pipeline().RunId}\"\n}",
 						"type": "Expression"
 					}
 				}
