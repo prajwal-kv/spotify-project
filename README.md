@@ -41,7 +41,7 @@ Security
 •	Role-Based Access Control (RBAC): Granular permissions management
 
 Project Requirements
-Core Requirements (8)
+Core Requirements 
 
 1.	Incremental Processing: Efficiently process only new or changed data
 2.	Backfilling Enabled: Support for historical data reprocessing
@@ -52,13 +52,13 @@ Core Requirements (8)
 7.	Git CI/CD Standards: Version control and automated deployment workflows
 8.	Dynamic Code: Parameterized and configurable pipeline components
 	
-Processing Modes (3)
+Processing Modes 
 
 •	Incremental Processing: Delta-based updates for efficiency
 •	Backfilling: Historical data loading capabilities
 •	Stream Processing: Real-time event processing
 
-Architecture Pillars (4)
+Architecture Pillars 
 
 •	Scalability: Handle growing data volumes
 •	Reliability: Fault-tolerant and resilient design
