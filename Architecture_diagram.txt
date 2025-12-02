@@ -1,7 +1,0 @@
-https://claude.ai/public/artifacts/8d2cc379-b589-432b-a614-64ee330c56ae
-
-
-metadata driven pipeline
-
-Databricks bundles-CI/claude
-project requirements-https://claude.ai/public/artifacts/de6c82cd-1ebb-4cb2-8f1b-d8771177229f
