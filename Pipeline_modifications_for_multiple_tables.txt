@@ -1,0 +1,101 @@
+
+
+Paste the below code in for_loop(outside_parameter)in 
+
+[
+  {
+    "schema": "dbo",
+    "table": "DimUser",
+    "cdc_col": "updated_at",
+    "from_date": ""
+  },
+  {
+    "schema": "dbo",
+    "table": "DimTrack",
+    "cdc_col": "updated_at",
+    "from_date": ""
+  },
+  {
+    "schema": "dbo",
+    "table": "DimDate",
+    "cdc_col": "updated_at",
+    "from_date": ""
+  },
+  {
+    "schema": "dbo",
+    "table": "DimArtist",
+    "cdc_col": "updated_at",
+    "from_date": ""
+  },
+  {
+    "schema": "dbo",
+    "table": "FactStream",
+    "cdc_col": "updated_at",
+    "from_date": ""
+  }
+]
+
+
+on Lookup--->Settings--->Folder----->@{item().table}_cdc
+
+Now move to _copy_data
+
+SELECT * 
+FROM @{item().schema}.@{item().table} 
+WHERE @{item().cdc_col} > '@{if(empty(item().from_date),activity('last_cdc').output.value[0].cdc,item().from_date)}'
+
+
+Now Tap twice on the set frequency
+
+SELECT MAX(@{item().cdc_col}) as cdc 
+FROM @{item().schema}.@{item().table}
+
+Now in the first copy activity
+sink-->Folder
+@item().table
+
+sink--->File
+
+@concat(item().table,'_',variables('current'))
+
+Note:pipeline().parametes.table is replace by just @item().table
+
+
+And in the second copy activity(connected with set)
+
+sink -->Folder
+@{item().table}_cdc
+
+
+source--->Folder
+
+@{item().table}_cdc
+
+
+Delete ->activity
+
+source--->folder
+
+@item().table
+
+source--->File
+
+@concat(item().table,'_',variables('current'))
+
+
+
+Tap on the ForEach
+
+Tap on Sequential
+on items: Tap on dynamic->parameters-->Tap on loop (@pipeline().parameters.loop_input)
+
+
+
+
+web:
+
+Pipeline expression: 
+{
+     "pipeline_name":"@{pipeline().Pipeline}",
+      "pipeline_runid":"@{pipeline().RunId}"
+}
